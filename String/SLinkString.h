@@ -17,16 +17,16 @@ void StrAssign_L(SLinkString &S, char *chars){
     if (!(*chars)) {
         S->next = NULL;
     } else {
-        q = S;
+        p = S;
         while (*chars)
         {
-            p = (LNode *) malloc (sizeof(LNode));
-            p->str = *chars;
-            q->next = p;
-            q = p;
+            q = (LNode *) malloc (sizeof(LNode));
+            q->str = *chars;
+            p->next = q;
+            p = q;
             chars ++;
         }
-        p->next = NULL;
+        q->next = NULL;
     }
 }
 
