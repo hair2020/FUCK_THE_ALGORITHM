@@ -89,6 +89,44 @@ bool StrConcat_L(SLinkString &S,SLinkString &T) {
     return true;
 }
 
+bool SubString_L(SLinkString S, SLinkString &Sub, int pos, int len){
+    SLinkString p,q,r;
+    int i;
+    if (len < 0 || len > StrLength_L(S) - pos + 1) return false;
+    p = S->next;
+    i = 1;
+    while (p&&i < pos) {
+        p = p->next;
+        i ++;
+    }
+    if (i != pos) return false;
+
+    while (Sub->next){ // ?
+        q = Sub;
+        Sub = Sub->next;
+        free(q);
+    }
+
+    r = Sub;
+    for (i = 1; i < len; i++ ) {
+        q = (LNode *) malloc (sizeof(LNode));
+        q->str = p->str;
+        r->next = q;
+        r = q;
+        p = p->next;
+    }
+    r->next = NULL;
+    return true;
+}
+
+bool Index_L(SLinkString S,SLinkString T,int &pos) {
+    int i;
+    SLinkString Sub;
+    StrAssign_L(Sub,"");
+    for (i = 1; i < StrLength_L(S) - StrLength_L(T); i++){
+        
+    }
+}
 void StrTraverse_L(SLinkString &S) {
     SLinkString p = S->next;
     while (p) {
