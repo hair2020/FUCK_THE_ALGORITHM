@@ -1,0 +1,48 @@
+digraph
+{
+ node [shape = record] 
+ S[label="头节点"]; S1[label="<L>i|<R>*"];
+  S->S1:L[label="head"] 
+; S2[label="<L>n|<R>*"];
+ S1:R->S2:L 
+; S3[label="<L>e|<R>*"];
+ S2:R->S3:L 
+; S4[label="<L>s|<R>*"];
+ S3:R->S4:L 
+; S5[label="<L>e|<R>*"];
+ S4:R->S5:L 
+; S6[label="<L> |<R>*"];
+ S5:R->S6:L 
+; S7[label="<L>a|<R>*"];
+ S6:R->S7:L 
+; S8[label="<L>i|<R>*"];
+ S7:R->S8:L 
+; S9[label="<L>r|<R>*"];
+ S8:R->S9:L 
+; S10[label="<L> |<R>*"];
+ S9:R->S10:L 
+; S11[label="<L>t|<R>*"];
+ S10:R->S11:L 
+; S12[label="<L>e|<R>*"];
+ S11:R->S12:L 
+; S13[label="<L>n|<R>*"];
+ S12:R->S13:L 
+; S14[label="<L>o|<R>*"];
+ S13:R->S14:L 
+; S15[label="<L>l|<R>*"];
+ S14:R->S15:L 
+; S16[label="<L>o|<R>*"];
+ S15:R->S16:L 
+; S17[label="<L>g|<R>*"];
+ S16:R->S17:L 
+; S18[label="<L>y|<R>*"];
+ S17:R->S18:L 
+; S19[label="<L> |<R>*"];
+ S18:R->S19:L 
+; S20[label="<L>i|<R>*"];
+ S19:R->S20:L 
+; S21[label="<L>l|<R>*"];
+ S20:R->S21:L 
+; S22[label="<L>d|<R>NULL"];
+ S21:R->S22:L 
+; }

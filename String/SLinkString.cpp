@@ -1,16 +1,12 @@
 #include <iostream>
-#include"SLinkString.h"
-int main() {
-	SLinkString S1 = NULL, S2 = NULL, S3 = NULL, S4 = NULL;
+#include "SLinkString.h"
+int main()  {
+	SLinkString S1, S2, S3, S4;
 	int x;
-    char a[] = "child";
-    char b[] = "children";
-    char c[] = "chinese chair technology ";
-    char d[] = "";
-	StrAssign_L(S1, a);
-	StrAssign_L(S2, b);
-	StrAssign_L(S3, c);
-	StrAssign_L(S4, d);
+	StrAssign_L(S1, "child");
+	StrAssign_L(S2, "children");
+	StrAssign_L(S3, "chinese chair technology ");
+	StrAssign_L(S4, "");
 	StrTraverse_L(S1);
 	
 	StrCopy_L(S4, S1);
@@ -26,9 +22,30 @@ int main() {
 	else {
 		cout << "连接失败" << endl;
 	}
-    char e[] = "ch";
-    char f[] = "abcd";
-	StrAssign_L(S1, e);
-	StrAssign_L(S2, f);
+
+	if (SubString_L(S3, S4, 9, 5)) {
+		cout << "取子串成功\n即为：" << endl;
+		StrTraverse_L(S4);
+	}
+	else {
+		cout << "取子串失败" << endl;
+	}
+	StrAssign_L(S1, "ch");
+	StrAssign_L(S2, "abcd");
+	//StrDelet_L(S2, 1, 2);
+	//StrTraveres_L(S2);
+	//StrInsert_L(S2, 1, S1);
+	//StrTraveres_L(S2);
+	
+	cout << "置换前S3的值为：" << endl;
+	StrTraverse_L(S3);
+	StrReplace_L(S3, S1, S2);
+	cout << "置换后S3的值为：";
+	StrTraverse_L(S3);
+	visualization(S3,"show.dot");
+	DestroyString_L(S1);
+	DestroyString_L(S2);
+	DestroyString_L(S3);
+	DestroyString_L(S4);
 	return 0;
 }
