@@ -96,8 +96,9 @@ bool SubString_Sq(DSqString &S, DSqString &Sub, int pos, int len) {
 }
 
 // pos start at 0
-bool Indext_Sq(DSqString &S, DSqString &T, int &pos){
-    int j = 0, i = 0;
+// i is used to control the starting position
+bool Indext_Sq(DSqString &S, DSqString &T,int i, int &pos){
+    int j = 0;
     while (i<S.length && j<T.length){
         if(S.str[i] == T.str[j]){
             i++; j++;
@@ -144,3 +145,25 @@ bool StrDelete_Sq(DSqString &S, int pos, int len) {
     return true;
 }
 
+// replace all nonoverlapping strings that occur int string S that are equal to T with string V
+void StrReplace_Sq(DSqString &S, DSqString T, DSqString V){
+    int i=0,pos;
+    while (Indext_Sq(S,T,i,pos)){
+        StrDelete_Sq(S,pos,T.length);
+        StrInsert_Sq(S,pos,V);
+        i += StrLength_Sq(V);
+    }
+}
+
+void StrTraverse_Sq(DSqString &S) {
+    for (int i = 0; i < S.length; i ++) {
+        cout << S.str[i];
+    }
+    cout << '\n';
+}
+
+void DestroyString_Sq(DSqString &S){
+    free(S.str);
+    S.str = NULL;
+    S.length = 0;
+}
