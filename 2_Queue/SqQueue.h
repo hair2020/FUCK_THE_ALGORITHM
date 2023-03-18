@@ -1,11 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <iomanip>
-using namespace std;
 
 typedef struct {
-    int *queue;
+    ElemType *queue;
     int front;
     int rear;
     int queuesize;
@@ -13,7 +8,7 @@ typedef struct {
 } SqQueue;
 
 void InitQueue_Sq(SqQueue &Q,int maxsize = 100,int incresize = 10){
-    Q.queue = (int *) malloc (maxsize * sizeof(int));
+    Q.queue = (ElemType *) malloc (maxsize * sizeof(ElemType));
     if (!Q.queue) exit(1);
     Q.rear = Q.front = 0;
     Q.queuesize = maxsize;
@@ -24,10 +19,10 @@ int QueueLength_Sq(SqQueue Q){
     return (Q.rear - Q.front + Q.queuesize) % Q.queuesize;
 }
 
-bool EnQueue_Sq(SqQueue &Q,int e){
+bool EnQueue_Sq(SqQueue &Q,ElemType e){
     // rear insert
     if ((Q.rear + 1) % Q.queuesize == Q.front){
-        Q.queue = (int *)realloc(Q.queue,(Q.queuesize+Q.incrementsize)*sizeof(int));
+        Q.queue = (ElemType *)realloc(Q.queue,(Q.queuesize+Q.incrementsize)*sizeof(ElemType));
         if (!Q.queue) return false;
         if (Q.front > Q.rear){ // ?
             for (int i=Q.queuesize; i >= Q.front; i--){
@@ -42,14 +37,14 @@ bool EnQueue_Sq(SqQueue &Q,int e){
     return true;
 }
 
-bool DeQueue_Sq(SqQueue &Q, int &e){
+bool DeQueue_Sq(SqQueue &Q, ElemType &e){
     if (Q.front == Q.rear) return false;
     e = Q.queue[Q.front]; // front out
     Q.front = (Q.front + 1) % Q.queuesize;
     return true;
 }
 
-bool GetHead_Sq(SqQueue &Q, int &e){
+bool GetHead_Sq(SqQueue &Q, ElemType &e){
     if (Q.front == Q.rear) return false;
     e = Q.queue[Q.front];
     return true;

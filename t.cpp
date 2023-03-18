@@ -4,7 +4,12 @@
 #include <iomanip>
 using namespace std;
 
+int test(int a,int b){
+
+    return a>b ? a+1:b+1;
+}
 int main() {
-    if (!-1) cout << 1 <<endl;
+    int ans = test(5,3);
+    cout <<  ans;
     return 0;
 }

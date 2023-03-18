@@ -1,22 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <iomanip>
-using namespace std;
 
 #define LIST_INIT_SIZE 100
 #define LIST_INCREMENT 10 // 增补空间
 
 typedef struct 
 {
-    int *elem;
+    ElemType *elem;
     int length;
     int listSize;
     int inCrementSize;
 }SqList;
 
 void Init_sqlist(SqList &L,int maxSize=LIST_INIT_SIZE,int increment=LIST_INCREMENT){
-    L.elem = (int *) malloc(maxSize*sizeof(int));
+    L.elem = (ElemType *) malloc(maxSize*sizeof(ElemType));
     if (!L.elem) exit(1);
     L.length = 0;
     L.listSize = maxSize;
@@ -33,17 +28,17 @@ bool List_empty(SqList L){
 }
 
 // search e
-int Locate_elem(SqList L,int e){
+int Locate_elem(SqList L,ElemType e){
     for (int i=0; i<L.length ; i++){
         if (L.elem[i] == e) return i;
     }
     return -1;
 }
 
-bool Listsq_insert(SqList &L,int i,int e){
+bool Listsq_insert(SqList &L,int i,ElemType e){
     if (i<0||i>L.length) return false;
     if (L.length >= L.listSize){
-        L.elem = (int *) realloc(L.elem,(L.listSize + L.inCrementSize)*sizeof(int));
+        L.elem = (ElemType *) realloc(L.elem,(L.listSize + L.inCrementSize)*sizeof(ElemType));
         if (!L.elem) exit(1);
         L.listSize += L.inCrementSize;
     }
@@ -56,10 +51,10 @@ bool Listsq_insert(SqList &L,int i,int e){
 }
 
 // incremental insertion
-bool Listsq_increse_insert(SqList &L,int e){
+bool Listsq_increse_insert(SqList &L,ElemType e){
     int i,j;
     if (L.length>= L.listSize){
-        L.elem = (int *)realloc(L.elem,(L.listSize+L.inCrementSize)*sizeof(int));
+        L.elem = (ElemType *)realloc(L.elem,(L.listSize+L.inCrementSize)*sizeof(ElemType));
         if (!L.elem) exit(1);
         L.listSize += L.inCrementSize;
     }
@@ -72,7 +67,7 @@ bool Listsq_increse_insert(SqList &L,int e){
     return true;
 }
 
-bool List_delete(SqList &L,int i,int &e){
+bool List_delete(SqList &L,int i,ElemType &e){
     if (i<0||i>L.length) return false;
     if (L.length <= 0) return false;
     e = L.elem[i];
@@ -83,7 +78,7 @@ bool List_delete(SqList &L,int i,int &e){
     return true;
 }
 
-bool Get_elem(SqList L,int i,int &e){
+bool Get_elem(SqList L,int i,ElemType &e){
     if (i<0||i>L.length) return false;
     if (L.length <= 0) return false;
     e = L.elem[i];

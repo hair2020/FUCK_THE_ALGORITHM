@@ -1,11 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-using namespace std;
 
 typedef struct DuNode
 {
-    int data;
+    ElemType data;
     struct DuNode *prior;
     struct DuNode *next;
 }DuLNode,*DuLinkList;
@@ -28,7 +24,7 @@ int ListLength_Dul(DuLinkList L){
 }
 
 // insert element e before i-th node in the bidirectional list L of the leader node
-bool ListInsert_DuL(DuLinkList &L,int i,int e){
+bool ListInsert_DuL(DuLinkList &L,int i,ElemType e){
     DuLNode *p,*s,*q;
     int j;
     q = L;
@@ -60,7 +56,7 @@ bool ListInsert_DuL(DuLinkList &L,int i,int e){
 }
 
 // delete the i-th node
-bool ListDelete_DuL(DuLinkList &L,int i,int &e){
+bool ListDelete_DuL(DuLinkList &L,int i,ElemType &e){
     DuLNode *s;
     s = L;
     int j = 0;

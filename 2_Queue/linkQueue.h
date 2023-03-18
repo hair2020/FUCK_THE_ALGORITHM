@@ -1,11 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <iomanip>
-using namespace std;
 
 typedef struct LNode{
-    int data;
+    ElemType data;
     struct LNode *next;
 }*QueuePtr;
 
@@ -30,7 +25,7 @@ int QueueLength_L(LinkQueue &Q){
     return k;
 }
 
-bool EnQueue_L(LinkQueue &Q, int e){
+bool EnQueue_L(LinkQueue &Q, ElemType e){
     QueuePtr s;
     s = (QueuePtr) malloc (sizeof(LNode));
     if (!s) return false;
@@ -44,7 +39,7 @@ bool EnQueue_L(LinkQueue &Q, int e){
     return true;
 }
 
-bool DeQueue_L(LinkQueue &Q, int &e){
+bool DeQueue_L(LinkQueue &Q, ElemType &e){
     QueuePtr p;
     if (!Q.front) return false;
     p = Q.front;
@@ -55,7 +50,7 @@ bool DeQueue_L(LinkQueue &Q, int &e){
     return true;
 }
 
-bool GetHead_L(LinkQueue &Q, int &e){
+bool GetHead_L(LinkQueue &Q, ElemType &e){
     if (!Q.front) return false;
     e = Q.front->data;
     return true;

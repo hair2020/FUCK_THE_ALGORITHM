@@ -1,12 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <iomanip>
-
-using namespace std;
 
 typedef struct Node {
-    int data;
+    ElemType data;
     struct Node *next;
 }LNode,*LinkList;
 
@@ -26,7 +20,7 @@ int ListLength_L(LinkList L){
     return k;
 }
 
-LNode *LocateElem_L(LinkList L,int e){
+LNode *LocateElem_L(LinkList L,ElemType e){
     L = L->next;
 
     while (L&&L->data!=e){
@@ -36,7 +30,7 @@ LNode *LocateElem_L(LinkList L,int e){
 }
 
 // return 元素位置
-int  LocateElem_L_2(LinkList L,int e){
+int  LocateElem_L_2(LinkList L,ElemType e){
     int i=0;
     L = L->next;
     while (L&&L->data != e) {
@@ -47,7 +41,7 @@ int  LocateElem_L_2(LinkList L,int e){
 }
 
 //在带有头结点的单链表L中的第i个结点之前插入元素e
-bool ListInsert_L(LinkList &L,int i, int e){
+bool ListInsert_L(LinkList &L,int i, ElemType e){
     LNode *s;
     int j;
     j = 0;
@@ -63,7 +57,7 @@ bool ListInsert_L(LinkList &L,int i, int e){
     return true;
 }
 // 删除带有头结点的单链表L中的第i个结点，并让e返回其值
-bool ListDelete_L(LinkList &L,int i,int &e){
+bool ListDelete_L(LinkList &L,int i,ElemType &e){
     LNode *s;
     int j = 0;
     int Llength = ListLength_L(L);
@@ -79,7 +73,7 @@ bool ListDelete_L(LinkList &L,int i,int &e){
     return true;
 }
 
-bool GetElem_L(LinkList L, int i, int &e){
+bool GetElem_L(LinkList L, int i, ElemType &e){
     int j=0;
     while (L->next&&j<i){ // search the i node
         L=L->next;
@@ -91,7 +85,7 @@ bool GetElem_L(LinkList L, int i, int &e){
 }
 
 // 已知一维数组A[n]中存有线性表的数据元素，利用头插法创建单链表L
-void CreateList_L_Front(LinkList &L,int a[],int n){
+void CreateList_L_Front(LinkList &L,ElemType a[],int n){
     LNode *p;
     int i;
     if (!(L = (LinkList) malloc( sizeof(LNode)))) exit(1);
@@ -106,7 +100,7 @@ void CreateList_L_Front(LinkList &L,int a[],int n){
 }
 
 // 尾插
-void CreateList_L_Rear(LinkList &L, int a[], int n){
+void CreateList_L_Rear(LinkList &L, ElemType a[], int n){
     LNode *s;
     L = (LinkList) malloc(sizeof(LNode));
     // ...

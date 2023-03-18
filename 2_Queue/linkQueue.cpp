@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
+typedef int ElemType;
 #include "LinkQueue.h"
 
 int main(){

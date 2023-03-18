@@ -40,6 +40,7 @@ bool Pop_Sq(SqStack &S,ElemType &e){
     return true;
 }
 
+// get top data to e
 bool GetTop_Sq(SqStack &S,ElemType &e){
     if (S.top == -1){
         return false;
@@ -48,7 +49,9 @@ bool GetTop_Sq(SqStack &S,ElemType &e){
     return true;
 }
 
+// if it's null return true
 bool StackEmpty_Sq(SqStack S){
+    
     if (S.top==-1) return true;
     return false;
 }

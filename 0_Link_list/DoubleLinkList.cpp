@@ -1,7 +1,8 @@
 typedef  int ElemType;
-# include "stdlib.h"     
-# include "iostream"
-# include "iomanip"     
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+using namespace std; 
 # include "DoubleLinkList.h"
 
  int main()

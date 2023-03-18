@@ -1,6 +1,9 @@
-# include "stdlib.h"     
-# include "iostream"   
-# include "iomanip"     
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <iomanip>
+using namespace std;  
+typedef int ElemType;
 # include "link_list.h"
 
 int main()

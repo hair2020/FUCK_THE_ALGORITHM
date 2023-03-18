@@ -1,90 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
+using namespace std;
 
-typedef struct StackNode
-{
-    int data;
-    struct StackNode *next;
+typedef int ElemType;
 
-}SNode,* LinkStack;
+#include "LinkStack.h"
 
-void InitStack(LinkStack &S){
-    S = NULL;
-}
-
-int StackLength(LinkStack S){
-    int k=0;
-    while (S){
-        k++;
-        S=S->next;
-    }
-    return k;
-}
-
-bool Push(LinkStack &S,int e){
-    LinkStack p;
-    p=(SNode *)malloc(sizeof(SNode));
-    if (!p){
-        printf("fail malloc");
-        return false;
-    }
-    p->data = e;
-    p->next = S;
-    S = p;
-    return true;
-}
-
-bool Pop(LinkStack &S,int &e){
-    LinkStack p;
-    if (S){
-        p = S;
-        S = S->next;
-        e = p->data;
-        free(p);
-        return true;
-    }else{
-        return false;
-    }
-}
-
-bool GetTop(LinkStack &S,int &e){
-    if (S){
-        e = S->data;
-        return true;
-    }else{
-        return false;
-    }
-}
-
-bool StackEmpty(LinkStack S){
-    if (!S)
-        return true;
-    else
-        return false;
-}
-
-void DestroyStack(LinkStack &S){
-    LinkStack p;
-    while (S){
-        p = S;
-        S = S->next;
-        free(p);
-    };
-    S = NULL;
-}
 int main() {
     LinkStack S;
-    InitStack(S);
-    Push(S,2);
-    Push(S,3);
-    Push(S,5);
+    InitStack_L(S);
+    Push_L(S,2);
+    Push_L(S,3);
+    Push_L(S,5);
     int e;
-    Pop(S,e);
+    Pop_L(S,e);
     printf("pop: %d\n",e);
-    int len = StackLength(S);
+    int len = StackLength_L(S);
     printf("length: %d\n",len);
-    DestroyStack(S);
-    len = StackLength(S);
+    DestroyStack_L(S);
+    len = StackLength_L(S);
     printf("length: %d\n",len);
     return 0;
 }
