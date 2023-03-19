@@ -1,9 +1,9 @@
-typedef int ElemType;
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <iomanip>
 using namespace std;
+typedef int ElemType;
 #include "SqQueue.h"
 
 int main(){
