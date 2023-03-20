@@ -1,3 +1,3 @@
 Preorder traversal : root -- left -- right
-Middle order traversal : left -- root -- right
+Inorder traversal : left -- root -- right
 Postorder traversal : left -- right -- root
